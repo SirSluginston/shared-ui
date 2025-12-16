@@ -6,3 +6,4 @@ export * from './components/PageContainer';
 export * from './components/Header';
 export * from './components/Button';
 export * from './components/Card';
+export * from './components/Badge';
