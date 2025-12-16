@@ -1,8 +1,22 @@
 {
-  "name": "shared-ui",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@sirsluginston/shared-ui",
+  "private": false,
+  "version": "1.0.1",
   "type": "module",
+  "main": "./dist/shared-ui.umd.cjs",
+  "module": "./dist/shared-ui.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/shared-ui.js",
+      "require": "./dist/shared-ui.umd.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [ "dist" ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
