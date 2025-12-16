@@ -4,3 +4,5 @@ import './styles/theme.css';
 // Export components
 export * from './components/PageContainer';
 export * from './components/Header';
+export * from './components/Button';
+export * from './components/Card';
