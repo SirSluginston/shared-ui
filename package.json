@@ -1,7 +1,16 @@
 {
   "name": "@sirsluginston/shared-ui",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.0.2",
+  "description": "The foundational Design System and UI component engine for SirSluginston Co.",
+  "author": "Logan Nizinski",
+  "keywords": [
+    "sirsluginston",
+    "shared-ui",
+    "react-vite-rolldown",
+    "venture-os"
+  ],
+  "license": "MIT",
   "type": "module",
   "main": "./dist/shared-ui.umd.cjs",
   "module": "./dist/shared-ui.js",
