@@ -6,8 +6,9 @@
   --brand-color: #D2691E;
   --project-color: #4B3A78; /* Dynamic - override via JS */
   --accent-color: #FFD700;
-  --light-color: #FFFFF0;
+  --light-color: #FFFFF0; 
   --dark-color: #2F2F2F;
+  --button-text: #FFFFF0;
 
   /* Fonts */
   --font-sans: 'Roboto', sans-serif;
@@ -25,7 +26,26 @@
   --radius-master: 8px;
 }
 
+/* Dark mode override: apply a .dark-mode class to <body> or a main wrapper */
+.dark-mode {
+  --brand-color: #D2691E;
+  --project-color: #4B3A78;
+  --accent-color: #FFD700;
+  --light-color: #2F2F2F; /* true background for dark mode */
+  --dark-color: #FFFFF0;  /* text color for dark mode */
+  --button-text: #FFFFF0;
+}
+
 /* Global Reset for the Library */
+
+/* Focus-visible: modern accessible outline for keyboard users */
+button:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(218, 165, 32, 0.22);
+  z-index: 9;
+}
+
 body {
   margin: 0;
   font-family: var(--font-sans);
