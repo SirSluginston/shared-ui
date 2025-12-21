@@ -4,7 +4,7 @@ interface SidebarProps {
   children: React.ReactNode;
   width?: string;
   /**
-   * The border color. Defaults to var(--sidebar-border-color) which is set by CSS for theme mode.
+   * The border color. Defaults to var(--shared-border-color) which is set by CSS for theme mode.
    */
   borderColor?: string;
 }
@@ -13,7 +13,7 @@ interface SidebarProps {
 export const Sidebar = ({
   children,
   width = '280px',
-  borderColor = 'var(--sidebar-border-color)',
+  borderColor = 'var(--shared-border-color)',
 }: SidebarProps) => {
   return (
     <aside

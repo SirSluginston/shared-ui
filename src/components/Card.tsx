@@ -13,7 +13,7 @@ export const Card = ({ title, children }: CardProps) => {
         backgroundColor: 'var(--light-color)',
         borderRadius: 'var(--radius-master)',
         padding: 'var(--space-lg)',
-        border: '2px solid var(--dark-color)',
+        border: '2.5px solid var(--shared-border-color)',
         color: 'var(--dark-color)',
         display: 'flex',
         flexDirection: 'column',
