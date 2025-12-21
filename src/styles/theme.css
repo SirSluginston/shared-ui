@@ -10,6 +10,9 @@
   --dark-color: #2F2F2F;
   --button-text: #FFFFF0;
 
+  /* Sidebar border color: default to project color in light mode */
+  --sidebar-border-color: var(--project-color);
+
   /* Fonts */
   --font-sans: 'Roboto', sans-serif;
   --font-serif: 'Lora', serif;
@@ -34,6 +37,8 @@
   --light-color: #2F2F2F; /* true background for dark mode */
   --dark-color: #FFFFF0;  /* text color for dark mode */
   --button-text: #FFFFF0;
+  /* Sidebar border color: accent color in dark mode */
+  --sidebar-border-color: var(--accent-color);
 }
 
 /* Global Reset for the Library */

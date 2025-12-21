@@ -3,22 +3,32 @@ import React from 'react';
 interface SidebarProps {
   children: React.ReactNode;
   width?: string;
+  /**
+   * The border color. Defaults to var(--sidebar-border-color) which is set by CSS for theme mode.
+   */
+  borderColor?: string;
 }
 
-// Sidebar: Vertical stack for filters, navigation, ads, or widgets.
-export const Sidebar = ({ children, width = '280px' }: SidebarProps) => (
-  <aside
-    style={{
-      width,
-      background: 'var(--light-color)',
-      padding: 'var(--space-lg)',
-      borderRight: '2px solid var(--accent-color)',
-      borderRadius: '0 var(--radius-master) var(--radius-master) 0',
-      minHeight: '60vh',
-      fontFamily: 'var(--font-sans)'  
-    }}
-  >
-    {children}
-  </aside>
-);
-
+// Sidebar: Modern card for filters, navigation, widgets.
+export const Sidebar = ({
+  children,
+  width = '280px',
+  borderColor = 'var(--sidebar-border-color)',
+}: SidebarProps) => {
+  return (
+    <aside
+      style={{
+        width,
+        background: 'var(--light-color)',
+        padding: 'var(--space-lg)',
+        border: `2.5px solid ${borderColor}`,
+        borderRadius: 'var(--radius-master)',
+        minHeight: '60vh',
+        fontFamily: 'var(--font-sans)',
+        boxSizing: 'border-box',
+      }}
+    >
+      {children}
+    </aside>
+  );
+};
