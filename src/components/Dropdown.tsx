@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface DropdownProps {
   options: { label: string; value: string }[];
   value: string;
