@@ -69,7 +69,7 @@ const Sandbox = () => {
         accountIcon={<Avatar fallback="A" size={40} />}
         items={[
           { label: 'Dashboard' },
-          { label: 'Projects', children: [ { label: 'Project A' }, { label: 'Project B' } ] },
+          { label: 'Projects', children: [ { label: 'Project A', onClick: () => {} }, { label: 'Project B', onClick: () => {} } ] },
           { label: 'Admin' },
         ]}
       />

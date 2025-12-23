@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface TableProps {
   columns: string[];
   data: (string | number)[][];
