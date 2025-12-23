@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline';
   label: string;
@@ -38,8 +36,7 @@ export const Button = ({ variant = 'primary', label, ...props }: ButtonProps) =>
   };
 
   // Only filled buttons use light text. Outline uses brand color for text for best contrast.
-  const isFilled = variant === 'primary' || variant === 'secondary';
-  const finalColor = isFilled ? 'var(--light-color)' : (props.style?.color || 'var(--brand-color)');
+  // const isFilled = variant === 'primary' || variant === 'secondary';
 
   return (
     <button
@@ -47,8 +44,6 @@ export const Button = ({ variant = 'primary', label, ...props }: ButtonProps) =>
       tabIndex={0}
       aria-label={label}
       style={{
-        boxShadow: '0 0 0 2px var(--accent-color)', // blue/a11y outline for demo
-      
         padding: 'var(--space-sm) var(--space-md)',
         borderRadius: 'var(--radius-master)',
         fontFamily: 'var(--font-sans)',

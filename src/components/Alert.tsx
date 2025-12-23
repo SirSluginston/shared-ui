@@ -1,17 +1,9 @@
-import React from 'react';
-
 interface AlertProps {
   message: string;
   type?: 'info' | 'success' | 'warning' | 'error';
 }
 
 // Alert: For banner messages, inline error or status feedback.
-const colors = {
-  info: 'var(--brand-color)',
-  success: 'seagreen',
-  warning: 'orange',
-  error: 'crimson'
-};
 const overlays = {
   info: 'rgba(210,105,30,0.28)',
   success: 'rgba(46,139,87,0.24)',

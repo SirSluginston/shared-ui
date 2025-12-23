@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface AvatarProps {
   src?: string; // If not provided, uses fallback initials or icon
   alt?: string;
@@ -27,7 +25,6 @@ export const Avatar = ({ src, alt = '', size = 40, fallback }: AvatarProps) => (
       fontSize: size * 0.4,
       userSelect: 'none',
     }}
-    aria-label={alt}
   >
     {src ? <img src={src} alt={alt} style={{ width: '100%', height: '100%' }} /> : fallback || '?'}
   </div>
