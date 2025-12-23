@@ -2,6 +2,8 @@
 
 Shared UI component library for SirSluginston Co projects. Built with React, TypeScript, and Vite.
 
+This is part of a larger server-driven UI system (VentureOS) where page layouts and content can be stored in a database and rendered dynamically. Components are designed to work with JSON-based component trees that get fetched from the backend.
+
 ## Installation
 
 ```bash
