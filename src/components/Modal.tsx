@@ -32,7 +32,11 @@ export const Modal = ({ open, onClose, children }: ModalProps) => {
           background: 'var(--light-color)',
           padding: 'var(--space-xl)',
           borderRadius: 'var(--radius-master)',
-          boxShadow: '0 4px 24px rgba(0,0,0,0.2)'
+          border: '2.5px solid var(--shared-border-color)',
+          boxShadow: '0 4px 24px rgba(0,0,0,0.2)',
+          maxWidth: '90vw',
+          maxHeight: '90vh',
+          overflow: 'auto',
         }}
         onClick={e => e.stopPropagation()}
       >

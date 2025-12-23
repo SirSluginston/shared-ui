@@ -9,7 +9,7 @@ interface TabsProps {
 // Tabs: Clickable horizontal section headers for switching visible content.
 export const Tabs = ({ tabs, activeIndex, onTabClick }: TabsProps) => (
   <div style={{ width: '100%' }}>
-    <div style={{ display: 'flex', gap: 'var(--space-md)', borderBottom: '2px solid var(--brand-color)' }}>
+    <div style={{ display: 'flex', gap: 'var(--space-md)', borderBottom: '2.5px solid var(--shared-border-color)' }}>
       {tabs.map((tab, i) => (
         <button
           key={tab.label}

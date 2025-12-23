@@ -1,5 +1,3 @@
-import React from 'react';
-
 interface HeaderProps {
   title: string;
   subtitle?: string;
@@ -11,7 +9,7 @@ export const Header = ({ title, subtitle }: HeaderProps) => {
     <header
       style={{
         marginBottom: 'var(--space-lg)',
-        borderBottom: '2px solid var(--brand-color)',
+        borderBottom: '2.5px solid var(--shared-border-color)',
         paddingBottom: 'var(--space-md)',
         width: '100%',
         marginTop: 0
