@@ -1,73 +1,125 @@
-# React + TypeScript + Vite
+# @sirsluginston/shared-ui
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Shared UI component library for SirSluginston Co projects. Built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## Installation
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install @sirsluginston/shared-ui
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Quick Start
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```tsx
+import { Shell, Card, Button } from '@sirsluginston/shared-ui';
+import '@sirsluginston/shared-ui/dist/shared-ui.css';
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+function App() {
+  return (
+    <Shell
+      projectTitle="My Project"
+      navItems={[
+        { label: 'Home', onClick: () => {} },
+        { label: 'About', onClick: () => {} }
+      ]}
+    >
+      <Card title="Welcome">
+        <Button onClick={() => alert('Hello!')}>Click Me</Button>
+      </Card>
+    </Shell>
+  );
+}
 ```
+
+## What's Included
+
+Most of the basic stuff you'd need for a site - buttons, cards, modals, forms, navigation, etc. Everything uses CSS variables so you can theme it easily across different projects.
+
+Main components:
+- **Shell** - Wraps header, navbar, and footer all together
+- **Card** - Basic card container
+- **Button**, **Input**, **Toggle** - For forms
+- **Modal**, **Alert**, **Badge** - Feedback components
+- **GridLayout**, **Sidebar** - Layout helpers
+- **Icons** - SVG icons (Sun, Moon, Bell, Settings, User)
+- Plus a bunch more - check the exports in `src/index.ts`
+
+## Theming
+
+Everything uses CSS variables. Import the CSS file and you get all the theme variables:
+
+```tsx
+import '@sirsluginston/shared-ui/dist/shared-ui.css';
+```
+
+The main colors you can override:
+- `--brand-color` - Main brand color
+- `--project-color` - Project-specific color (overrides brand for individual projects)
+- `--accent-color` - Accent/highlight color
+- `--light-color` - Background color
+- `--dark-color` - Text color
+- `--shared-border-color` - Border color (switches with theme)
+
+For dark mode, just add the `dark-mode` class to your body:
+
+```tsx
+document.body.classList.toggle('dark-mode');
+```
+
+The colors will automatically switch. Borders use `--shared-border-color` which switches from project-color in light mode to accent-color in dark mode.
+
+## Examples
+
+### Shell Component
+
+The Shell component handles the whole page layout - header with logo, navbar, footer, theme toggle, etc:
+
+```tsx
+import { Shell, SunIcon, MoonIcon } from '@sirsluginston/shared-ui';
+
+<Shell
+  projectTitle="SirSluginston Co"
+  projectLogo={<img src="/logo.jpg" alt="Logo" />}
+  navItems={[
+    { label: 'Home', onClick: () => navigate('/') },
+    { label: 'Projects', onClick: () => navigate('/projects') }
+  ]}
+  themeToggle={
+    <button onClick={toggleTheme}>
+      {darkMode ? <SunIcon /> : <MoonIcon />}
+    </button>
+  }
+  footerYearCreated={2020}
+  footerPoweredBy="SirSluginston Co"
+>
+  {/* Your page content */}
+</Shell>
+```
+
+### Card with Grid
+
+```tsx
+import { GridLayout, Card } from '@sirsluginston/shared-ui';
+
+<GridLayout>
+  {projects.map(project => (
+    <Card key={project.id} title={project.name}>
+      <p>{project.description}</p>
+    </Card>
+  ))}
+</GridLayout>
+```
+
+## Development
+
+```bash
+npm install
+npm run dev
+npm run build
+```
+
+**The build process generates TypeScript declarations automatically. Publishing runs the build first via `prepublishOnly`.**
+
+## License
+
+MIT
