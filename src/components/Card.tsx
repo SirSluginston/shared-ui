@@ -3,12 +3,15 @@ import React from 'react';
 interface CardProps {
   title?: string;
   children: React.ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
-export const Card = ({ title, children }: CardProps) => {
+export const Card = ({ title, children, className, style }: CardProps) => {
   // All styles leverage CSS variables for full theming compatibility.
   return (
     <div
+      className={className}
       style={{
         backgroundColor: 'var(--light-color)',
         borderRadius: 'var(--radius-master)',
@@ -19,7 +22,8 @@ export const Card = ({ title, children }: CardProps) => {
         flexDirection: 'column',
         gap: 'var(--space-md)',
         transition: 'all 0.3s ease',
-        marginTop: 0
+        marginTop: 0,
+        ...style,
       }}
     >
       {title && (
@@ -28,7 +32,7 @@ export const Card = ({ title, children }: CardProps) => {
             marginTop: 0,
             marginBottom: 0,
             color: 'var(--brand-color)',
-            borderBottom: '2px solid var(--brand-color)',
+            borderBottom: '2.5px solid var(--shared-border-color)',
             paddingBottom: 'var(--space-xs)',
             fontFamily: 'var(--font-serif)',
             fontSize: '1.25rem',
