@@ -35,6 +35,11 @@ export const Button = ({ variant = 'primary', label, ...props }: ButtonProps) =>
     }
   };
 
+  // Store the initial boxShadow from props.style if provided, otherwise use default
+  const defaultStyles = getStyles();
+  const customBoxShadow = props.style?.boxShadow;
+  const initialBoxShadow = (customBoxShadow as string) || defaultStyles.boxShadow || 'none';
+
   // Only filled buttons use light text. Outline uses brand color for text for best contrast.
   // const isFilled = variant === 'primary' || variant === 'secondary';
 
@@ -64,13 +69,11 @@ export const Button = ({ variant = 'primary', label, ...props }: ButtonProps) =>
       }}
       onMouseUp={(e) => {
         e.currentTarget.style.transform = 'translate(0, 0)';
-        const styles = getStyles();
-        if (styles.boxShadow) e.currentTarget.style.boxShadow = styles.boxShadow as string;
+        e.currentTarget.style.boxShadow = initialBoxShadow;
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.transform = 'translate(0, 0)';
-        const styles = getStyles();
-        if (styles.boxShadow) e.currentTarget.style.boxShadow = styles.boxShadow as string;
+        e.currentTarget.style.boxShadow = initialBoxShadow;
       }}
     >
       {label}
