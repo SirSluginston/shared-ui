@@ -1,7 +1,7 @@
 {
   "name": "@sirsluginston/shared-ui",
   "private": false,
-  "version": "1.1.0",
+  "version": "1.1.19",
   "description": "The foundational Design System and UI component engine for SirSluginston Co.",
   "author": "Logan Nizinski",
   "keywords": [
@@ -12,27 +12,33 @@
   ],
   "license": "MIT",
   "type": "module",
-  "main": "./dist/shared-ui.umd.cjs",
+  "main": "./dist/shared-ui.js",
   "module": "./dist/shared-ui.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/shared-ui.js",
-      "require": "./dist/shared-ui.umd.cjs",
+      "default": "./dist/shared-ui.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./dist/shared-ui.css": "./dist/shared-ui.css"
   },
-  "files": [ "dist" ],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "access": "public"
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build && npm run build:types",
+    "build:types": "tsc -p tsconfig.declaration.json",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "@sirsluginston/shared-ui": "^1.1.10",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
@@ -48,7 +54,8 @@
     "globals": "^16.5.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
-    "vite": "npm:rolldown-vite@7.2.5"
+    "vite": "npm:rolldown-vite@7.2.5",
+    "vite-plugin-dts": "^4.5.4"
   },
   "overrides": {
     "vite": "npm:rolldown-vite@7.2.5"

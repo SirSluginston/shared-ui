@@ -1,24 +1,28 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
+import dts from 'vite-plugin-dts';
 import path from 'path';
 
-// This is the modern way to handle paths in Vite/ESM
 const __dirname = path.resolve();
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    // Type generation handled separately via build:types script
+  ],
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
       name: 'SharedUI',
       fileName: 'shared-ui',
-      formats: ['es', 'umd'],
+      formats: ['es'],
     },
     rollupOptions: {
-      // This is the magic line that stops the index.html error
-      input: path.resolve(__dirname, 'src/index.ts'), 
-      external: ['react', 'react-dom'],
+      input: path.resolve(__dirname, 'src/index.ts'),
+      external: (id) => /^react($|\/)/.test(id), // Externalize react, react-dom, and react/jsx-runtime
       output: {
+        preserveModules: true,
+        preserveModulesRoot: 'src',
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
