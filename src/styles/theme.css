@@ -30,10 +30,9 @@
 }
 
 /* Dark mode override: apply a .dark-mode class to <body> or a main wrapper */
+/* Only inverts light/dark colors - brand/project/accent colors come from BRAND config via JS */
 .dark-mode {
-  --brand-color: #D2691E;
-  --project-color: #4B3A78;
-  --accent-color: #FFD700;
+  /* Brand/project/accent colors are set by applyTheme() from BRAND config - don't override */
   --light-color: #2F2F2F; /* true background for dark mode */
   --dark-color: #FFFFF0;  /* text color for dark mode */
   --button-text: #FFFFF0;

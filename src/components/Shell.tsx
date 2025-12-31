@@ -20,18 +20,22 @@ interface ShellProps {
     onClick: () => void;
     visible?: boolean; // Control visibility (e.g., show on mobile only)
   };
+  searchComponent?: React.ReactNode; // Custom search component for navbar
   
   // Right side icons
   themeToggle?: React.ReactNode;
   notificationIcon?: React.ReactNode;
   settingsIcon?: React.ReactNode;
   accountIcon?: React.ReactNode;
+  onNotificationClick?: () => void;
+  onAccountClick?: () => void;
   
   // Footer
   footerLinks?: Array<{ label: string; url: string }>;
   footerCopyright?: string;
+  footerCopyrightBrand?: string; // Brand/project name for copyright (e.g., "OSHA Trail")
   footerYearCreated?: number; // Year the company/project was created for copyright range
-  footerPoweredBy?: string; // e.g., "SirSluginston Co"
+  footerPoweredBy?: string; // e.g., "SirSluginston VentureOS"
   footerStyle?: React.CSSProperties;
   
   // Content
@@ -47,12 +51,16 @@ export const Shell = ({
   projectLogo,
   navItems,
   hamburgerMenu,
+  searchComponent,
   themeToggle,
   notificationIcon,
   settingsIcon,
   accountIcon,
+  onNotificationClick,
+  onAccountClick,
   footerLinks,
   footerCopyright,
+  footerCopyrightBrand,
   footerYearCreated,
   footerPoweredBy,
   footerStyle,
@@ -191,6 +199,7 @@ export const Shell = ({
           {/* Notification icon */}
           {notificationIcon && !isMobile && (
             <button
+              onClick={onNotificationClick}
               style={{
                 width: isMobile ? 36 : 40,
                 height: isMobile ? 36 : 40,
@@ -244,7 +253,8 @@ export const Shell = ({
           )}
           {/* Account icon */}
           {accountIcon && !isMobile && (
-            <div
+            <button
+              onClick={onAccountClick}
               style={{
                 width: 48,
                 height: 48,
@@ -255,10 +265,20 @@ export const Shell = ({
                 border: '2.5px solid var(--shared-border-color)',
                 borderRadius: '50%',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.13)',
+                cursor: 'pointer',
+                transition: 'transform 0.2s',
+                padding: 0,
               }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'scale(1.05)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'scale(1)';
+              }}
+              aria-label="Account"
             >
               {accountIcon}
-            </div>
+            </button>
           )}
         </div>
       </div>
@@ -386,6 +406,13 @@ export const Shell = ({
               )}
             </div>
           ))}
+          
+          {/* Search Component - Right side of navbar */}
+          {searchComponent && (
+            <div style={{ position: 'absolute', right: 'var(--space-md)', zIndex: 10 }}>
+              {searchComponent}
+            </div>
+          )}
         </div>
       </nav>
 
@@ -399,6 +426,7 @@ export const Shell = ({
         <Footer
           links={footerLinks}
           copyright={footerCopyright}
+          copyrightBrand={footerCopyrightBrand}
           yearCreated={footerYearCreated}
           poweredBy={footerPoweredBy}
           style={footerStyle}

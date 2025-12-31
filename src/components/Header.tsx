@@ -8,7 +8,7 @@ export const Header = ({ title, subtitle }: HeaderProps) => {
   return (
     <header
       style={{
-        marginBottom: 'var(--space-lg)',
+        marginBottom: 'var(--space-md)',
         borderBottom: '2.5px solid var(--shared-border-color)',
         paddingBottom: 'var(--space-md)',
         width: '100%',

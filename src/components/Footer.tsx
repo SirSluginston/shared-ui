@@ -3,22 +3,24 @@ import React from 'react';
 interface FooterProps {
   links?: Array<{ label: string; url: string }>;
   copyright?: string;
+  copyrightBrand?: string; // Brand/project name for copyright (e.g., "OSHA Trail")
   yearCreated?: number; // Year the company/project was created
-  poweredBy?: string; // e.g., "SirSluginston Co"
+  poweredBy?: string; // e.g., "SirSluginston VentureOS"
   style?: React.CSSProperties;
 }
 
 // Footer: Simple site-level info, copyright, links.
-export const Footer = ({ links, copyright, yearCreated, poweredBy, style }: FooterProps) => {
+export const Footer = ({ links, copyright, copyrightBrand, yearCreated, poweredBy, style }: FooterProps) => {
   const currentYear = new Date().getFullYear();
   
   // Generate copyright text with year range if yearCreated is provided
   const getCopyrightText = () => {
     if (copyright) return copyright;
+    const brandName = copyrightBrand || 'SirSluginston Co.';
     if (yearCreated && yearCreated !== currentYear) {
-      return `© ${yearCreated}-${currentYear} SirSluginston Co.`;
+      return `© ${yearCreated}-${currentYear} ${brandName}`;
     }
-    return `© ${currentYear} SirSluginston Co.`;
+    return `© ${currentYear} ${brandName}`;
   };
 
   return (
