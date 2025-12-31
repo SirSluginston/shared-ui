@@ -1,7 +1,7 @@
 {
   "name": "@sirsluginston/shared-ui",
   "private": false,
-  "version": "1.1.19",
+  "version": "1.2.1",
   "description": "The foundational Design System and UI component engine for SirSluginston Co.",
   "author": "Logan Nizinski",
   "keywords": [
