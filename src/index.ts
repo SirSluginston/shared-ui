@@ -21,6 +21,7 @@ export * from './components/ProgressBar';
 export * from './components/ProjectTitle';
 export * from './components/Shell';
 export * from './components/Sidebar';
+export * from './components/SidebarItem';
 export * from './components/SkeletonLoader';
 export * from './components/Spinner';
 export * from './components/StatCard';
